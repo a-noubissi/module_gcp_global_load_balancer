@@ -12,3 +12,8 @@ variable "domain" {
   type = string
   nullable = false
 }
+
+variable "ip_address" {
+  type = string
+  nullable = false
+}
