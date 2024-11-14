@@ -13,7 +13,3 @@ variable "domain" {
   nullable = false
 }
 
-variable "ip_address" {
-  type = string
-  nullable = false
-}

@@ -14,9 +14,14 @@ resource "google_compute_global_forwarding_rule" "fwd_rule" {
   name                  = "${local.cloudrun_trimmed_name}-${terraform.workspace}-forwarding-rule"
   target                = google_compute_target_https_proxy.default.id
   load_balancing_scheme = "EXTERNAL_MANAGED"
-  ip_address            = var.ip_address
+  ip_address            = google_compute_global_address.ip_address.id
   ip_protocol           = "TCP"
   port_range            = "443-443"
+}
+
+resource "google_compute_global_address" "ip_address" {
+  provider = google.project
+  name     = "${local.cloudrun_trimmed_name}-${terraform.workspace}-glb-ip"
 }
 
 
